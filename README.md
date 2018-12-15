@@ -1,3 +1,27 @@
+
+
+## 添加Dockerfile
+
+```bash
+#使用方法
+#创建image
+docker build -t proxy .
+#运行, 6666为本地监听端口
+docker run -it -p 6666:5555 proxy
+```
+
+## 修改了requirements
+
+新版本python的redis库运行存在问题，将requirements.txt中redis版本降低了。
+
+## 添加了一个获取全部代理的api
+
+`/get_all/`
+
+感谢原作者的优秀项目，以下为原README
+
+***
+
 # ProxyPool
 
 ## 安装
