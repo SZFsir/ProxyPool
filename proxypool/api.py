@@ -1,6 +1,6 @@
 from flask import Flask, g
-
 from .db import RedisClient
+import json
 
 __all__ = ['app']
 
@@ -30,12 +30,19 @@ def get_proxy():
 
 @app.route('/count')
 def get_counts():
-    """
+    """redis==2.10.5
     Get the count of proxies
     :return: 代理池总量
     """
     conn = get_conn()
     return str(conn.count())
+
+
+@app.route('/get_all/')
+def get_all():
+    conn = get_conn()
+    all_proxy = json.dumps(conn.all())
+    return all_proxy
 
 
 if __name__ == '__main__':
